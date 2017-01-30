@@ -1,0 +1,49 @@
+{
+  "name": "fatego-battle-simulator",
+  "description": "fatego-battle-simulator",
+  "version": "1.0.0",
+  "author": "wantora <wantora@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/wantora/fatego-battle-simulator/issues"
+  },
+  "dependencies": {
+    "events": "^1.1.1",
+    "lodash": "^4.17.4",
+    "material-ui": "^0.16.7",
+    "normalize.css": "^5.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-react": "^6.22.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.14.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-react": "^6.9.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.10.0",
+    "gh-pages": "^0.12.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "homepage": "https://github.com/wantora/fatego-battle-simulator#readme",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wantora/fatego-battle-simulator.git"
+  },
+  "scripts": {
+    "build": "webpack -p --config webpack.production.config.js",
+    "deploy": "npm run build && gh-pages -d ./dist",
+    "lint": "eslint ./src",
+    "start": "webpack-dev-server -d --content-base ./src/www --inline --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
