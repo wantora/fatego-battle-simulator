@@ -53,7 +53,7 @@ export default class Result extends React.Component {
         }
         
         rows.push(
-          <tr>
+          <tr key={o.name}>
             <th>{o.label || valueTypes[o.name].label}</th>
             <td>{valueStr}</td>
           </tr>
@@ -66,25 +66,29 @@ export default class Result extends React.Component {
         <h2 className="result-header">ダメージ</h2>
         <Divider />
         <table className="result-table">
-          <tr>
-            <th>ダメージ (最小)</th>
-            <td>{damageMin}</td>
-          </tr>
-          <tr>
-            <th>ダメージ (平均)</th>
-            <td>{damageAve}</td>
-          </tr>
-          <tr>
-            <th>ダメージ (最大)</th>
-            <td>{damageMax}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>ダメージ (最小)</th>
+              <td>{damageMin}</td>
+            </tr>
+            <tr>
+              <th>ダメージ (平均)</th>
+              <td>{damageAve}</td>
+            </tr>
+            <tr>
+              <th>ダメージ (最大)</th>
+              <td>{damageMax}</td>
+            </tr>
+          </tbody>
         </table>
       </RowBox>
       <RowBox>
         <h2 className="result-header">詳細情報</h2>
         <Divider />
         <table className="result-table">
-          {rows}
+          <tbody>
+            {rows}
+          </tbody>
         </table>
       </RowBox>
     </RowBoxGroup>;
