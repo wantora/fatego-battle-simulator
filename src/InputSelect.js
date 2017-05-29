@@ -1,9 +1,9 @@
 import React from "react";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import {DispatchableComponent} from "./flux";
+import {dispatch} from "./flux";
 
-export default class InputSelect extends DispatchableComponent {
+export default class InputSelect extends React.Component {
   static get propTypes() {
     return {
       name: React.PropTypes.string.isRequired,
@@ -18,7 +18,8 @@ export default class InputSelect extends DispatchableComponent {
     super(props);
     
     this.handleChange = (event, key, payload) => {
-      this.dispatch("update", {
+      dispatch({
+        type: "update",
         name: this.props.name,
         value: payload,
       });

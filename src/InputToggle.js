@@ -1,8 +1,8 @@
 import React from "react";
 import Toggle from "material-ui/Toggle";
-import {DispatchableComponent} from "./flux";
+import {dispatch} from "./flux";
 
-export default class InputToggle extends DispatchableComponent {
+export default class InputToggle extends React.Component {
   static get propTypes() {
     return {
       name: React.PropTypes.string.isRequired,
@@ -16,7 +16,8 @@ export default class InputToggle extends DispatchableComponent {
     super(props);
     
     this.handleToggle = (event, isInputChecked) => {
-      this.dispatch("update", {
+      dispatch({
+        type: "update",
         name: this.props.name,
         value: isInputChecked,
       });

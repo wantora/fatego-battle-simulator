@@ -1,21 +1,27 @@
-import React from "react";
+import {EventEmitter} from "events";
 
-const SharedTypes = {
-  emitter: React.PropTypes.any,
+const Dispatcher = new EventEmitter();
+
+export const dispatch = (action) => {
+  Dispatcher.emit("action", action);
 };
 
-export class Provider extends React.Component {
-  static get childContextTypes() {
-    return SharedTypes;
-  }
-}
+export class Store {
+  constructor(initialState, reducer) {
+    this.reducer = reducer;
+    this.state = initialState;
+    this.emitter = new EventEmitter();
 
-export class DispatchableComponent extends React.Component {
-  static get contextTypes() {
-    return SharedTypes;
+    this.onAction = (action) => {
+      this.state = this.reducer(this.state, action);
+      this.emitter.emit("change");
+    };
+    Dispatcher.on("action", this.onAction);
   }
-  
-  dispatch(...args) {
-    return this.context.emitter.emit(...args);
+  dispose() {
+    Dispatcher.removeListener("action", this.onAction);
+  }
+  subscribe(listener) {
+    this.emitter.on("change", listener);
   }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import TextField from "material-ui/TextField";
-import {DispatchableComponent} from "./flux";
+import {dispatch} from "./flux";
 
-export default class InputNumber extends DispatchableComponent {
+export default class InputNumber extends React.Component {
   static get propTypes() {
     return {
       name: React.PropTypes.string.isRequired,
@@ -36,7 +36,8 @@ export default class InputNumber extends DispatchableComponent {
     } else {
       this.setState({value, isError: false});
       
-      this.dispatch("update", {
+      dispatch({
+        type: "update",
         name: this.props.name,
         value,
       });
