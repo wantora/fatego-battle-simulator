@@ -204,7 +204,7 @@ const types = [
   new ValueType({
     name: "defenseEffect",
     defaultValue: 0,
-    label: "防御力状態変化",
+    label: "敵防御力状態変化",
   }),
   new ValueType({
     name: "spEffect",
