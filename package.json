@@ -7,6 +7,7 @@
     "url": "https://github.com/wantora/fatego-battle-simulator/issues"
   },
   "dependencies": {
+    "core-js": "^2.4.1",
     "events": "^1.1.1",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.1",
