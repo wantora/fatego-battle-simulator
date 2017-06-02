@@ -18,6 +18,10 @@ function reducer(state, action) {
     return Object.assign({}, state, {
       values: Object.assign({}, state.values, {[action.name]: action.value}),
     });
+  } else if (action.type === "reset") {
+    return Object.assign({}, state, {
+      values: initialState.values,
+    });
   }
   return state;
 }

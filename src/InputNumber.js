@@ -21,6 +21,7 @@ export default class InputNumber extends React.Component {
       isError: false,
     };
     
+    this.textInput = null;
     this.timeoutID = null;
     this.handleChange = (event, newValue) => {
       clearTimeout(this.timeoutID);
@@ -44,6 +45,13 @@ export default class InputNumber extends React.Component {
       });
     }
   }
+  componentWillReceiveProps(nextProps) {
+    // resetされた時
+    if (nextProps.value !== this.state.value) {
+      this.textInput.input.value = nextProps.value;
+      this.setState({value: nextProps.value, isError: false});
+    }
+  }
   render() {
     return <TextField
       key={this.props.name}
@@ -54,6 +62,7 @@ export default class InputNumber extends React.Component {
       errorText={this.state.isError ? "数値を入力して下さい。" : null}
       disabled={this.props.disabled}
       defaultValue={this.state.value.toString()}
+      ref={(e) => { this.textInput = e; }}
       onChange={this.handleChange}
     />;
   }

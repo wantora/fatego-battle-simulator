@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
+import RaisedButton from "material-ui/RaisedButton";
 import valueTypes from "./valueTypes";
 import RowBox from "./RowBox";
+import RowBoxWide from "./RowBoxWide";
 import RowBoxGroup from "./RowBoxGroup";
+import {dispatch} from "./flux";
 
 export default class InputForm extends React.Component {
   static get propTypes() {
@@ -40,6 +43,12 @@ export default class InputForm extends React.Component {
         {valueTypes.noblePhantasmEffect.getInputComponent(this.props.values)}
         {valueTypes.damagePlusEffect.getInputComponent(this.props.values)}
       </RowBox>
+      <RowBoxWide>
+        <RaisedButton
+          label="リセット"
+          onTouchTap={() => { dispatch({type: "reset"}); }}
+        />
+      </RowBoxWide>
     </RowBoxGroup>;
   }
 }
