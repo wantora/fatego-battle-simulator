@@ -87,7 +87,7 @@ const types = [
       {name: "normal", label: "等倍", value: 100},
       {name: "weak", label: "有利", value: 200},
       {name: "resist", label: "不利", value: 50},
-      {name: "berserker", label: "バーサーカー", value: 150},
+      {name: "berserker", label: "1.5倍", value: 150},
     ],
   }),
   new ValueType({
