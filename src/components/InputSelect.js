@@ -29,8 +29,18 @@ export default class InputSelect extends React.Component {
     };
   }
   render() {
-    const menuItems = this.props.items.map(({name, label, value}) => {
-      return <MenuItem key={name} value={name} primaryText={label} />;
+    const menuItems = this.props.items.map(({name, label, value, color}) => {
+      let primaryText;
+      
+      if (!this.props.disabled && color) {
+        primaryText = <span style={{color: color}}>{label}</span>;
+      } else {
+        primaryText = label;
+      }
+      
+      return <MenuItem key={name} value={name}
+        primaryText={primaryText}
+      />;
     });
     
     return <SelectField
@@ -41,6 +51,7 @@ export default class InputSelect extends React.Component {
       disabled={this.props.disabled}
       value={this.props.value}
       onChange={this.handleChange}
+      selectedMenuItemStyle={{backgroundColor: "#eee", color: "inherit"}}
     >
       {menuItems}
     </SelectField>;

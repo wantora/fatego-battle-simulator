@@ -56,6 +56,9 @@ class ValueType {
   }
 }
 
+const COLOR_WEAK = "hsl(0, 70%, 50%)";
+const COLOR_RESIST = "hsl(240, 70%, 50%)";
+
 const types = [
   new ValueType({
     name: "atk",
@@ -89,9 +92,9 @@ const types = [
     label: "クラス相性",
     valueNames: [
       {name: "normal", label: "等倍", value: 100},
-      {name: "weak", label: "有利", value: 200},
-      {name: "resist", label: "不利", value: 50},
-      {name: "berserker", label: "1.5倍", value: 150},
+      {name: "weak", label: "有利", value: 200, color: COLOR_WEAK},
+      {name: "resist", label: "不利", value: 50, color: COLOR_RESIST},
+      {name: "berserker", label: "1.5倍", value: 150, color: "hsl(300, 70%, 50%)"},
     ],
   }),
   new ValueType({
@@ -100,8 +103,8 @@ const types = [
     label: "天地人相性",
     valueNames: [
       {name: "normal", label: "等倍", value: 100},
-      {name: "weak", label: "有利", value: 110},
-      {name: "resist", label: "不利", value: 90},
+      {name: "weak", label: "有利", value: 110, color: COLOR_WEAK},
+      {name: "resist", label: "不利", value: 90, color: COLOR_RESIST},
     ],
   }),
   new ValueType({
@@ -138,9 +141,9 @@ const types = [
     label: "カード種別",
     resultLabel: "カード種別補正",
     valueNames: [
-      {name: "arts", label: "Arts", value: 100},
-      {name: "buster", label: "Buster", value: 150},
-      {name: "quick", label: "Quick", value: 80},
+      {name: "arts", label: "Arts", value: 100, color: "hsl(240, 70%, 50%)"},
+      {name: "buster", label: "Buster", value: 150, color: "hsl(0, 70%, 50%)"},
+      {name: "quick", label: "Quick", value: 80, color: "hsl(120, 60%, 50%)"},
     ],
     enableFilter: (v) => v.getValue("attackType") === "noblePhantasm" || v.getValue("attackType") === "normal",
   }),
