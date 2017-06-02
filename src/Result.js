@@ -4,6 +4,7 @@ import Divider from "material-ui/Divider";
 import valueTypes from "./valueTypes";
 import RowBox from "./RowBox";
 import RowBoxGroup from "./RowBoxGroup";
+import numeral from "numeral";
 
 export default class Result extends React.Component {
   static get propTypes() {
@@ -44,13 +45,13 @@ export default class Result extends React.Component {
         let valueStr;
         
         if (o.type === "number") {
-          valueStr = `${value}`;
+          valueStr = numeral(value).format("0,0");
         } else if (o.type === "percent") {
-          valueStr = `${value}%`;
+          valueStr = numeral(value / 100).format("0,0.0%");
         } else if (o.type === "atk") {
-          valueStr = `${(value * 0.23).toFixed(1)}`;
+          valueStr = numeral(value * 0.23).format("0,0.0");
         } else if (o.type === "atkPercent") {
-          valueStr = `${(resolvedValues.atk * value / 100).toFixed(1)}`;
+          valueStr = numeral(resolvedValues.atk * value / 100).format("0,0.0");
         }
         
         rows.push(
@@ -70,15 +71,15 @@ export default class Result extends React.Component {
           <tbody>
             <tr>
               <th>ダメージ (最小)</th>
-              <td>{damageMin}</td>
+              <td>{numeral(damageMin).format("0,0")}</td>
             </tr>
             <tr>
-              <th>ダメージ (平均)</th>
-              <td>{damageAve}</td>
+              <th>ダメージ (中央)</th>
+              <td>{numeral(damageAve).format("0,0")}</td>
             </tr>
             <tr>
               <th>ダメージ (最大)</th>
-              <td>{damageMax}</td>
+              <td>{numeral(damageMax).format("0,0")}</td>
             </tr>
           </tbody>
         </table>
