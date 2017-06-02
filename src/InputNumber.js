@@ -46,6 +46,7 @@ export default class InputNumber extends React.Component {
   render() {
     return <TextField
       key={this.props.name}
+      type="number"
       floatingLabelText={this.props.label}
       floatingLabelFixed
       fullWidth
