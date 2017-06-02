@@ -9,28 +9,28 @@
   "dependencies": {
     "events": "^1.1.1",
     "lodash": "^4.17.4",
-    "material-ui": "^0.16.7",
-    "normalize.css": "^5.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "material-ui": "^0.18.1",
+    "normalize.css": "^7.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.22.1",
-    "babel-loader": "^6.2.10",
-    "babel-preset-env": "^1.1.8",
-    "babel-preset-react": "^6.22.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.26.1",
-    "eslint": "^3.14.1",
-    "eslint-loader": "^1.6.1",
-    "eslint-plugin-react": "^6.9.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.10.0",
-    "gh-pages": "^0.12.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "css-loader": "^0.28.4",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-react": "^7.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "gh-pages": "^1.0.0",
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "homepage": "https://github.com/wantora/fatego-battle-simulator#readme",
   "license": "MIT",
@@ -40,10 +40,10 @@
     "url": "git+ssh://git@github.com/wantora/fatego-battle-simulator.git"
   },
   "scripts": {
-    "build": "webpack -p --config webpack.production.config.js",
+    "build": "webpack --config webpack.production.config.js",
     "deploy": "npm run build && gh-pages -d ./dist",
-    "lint": "eslint ./src",
-    "start": "webpack-dev-server -d --content-base ./src/www --inline --open",
+    "lint": "eslint .",
+    "start": "webpack-dev-server --content-base ./src/www --inline --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

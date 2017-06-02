@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 export default class RowBox extends React.Component {
   static get propTypes() {
     return {
-      children: React.PropTypes.node,
+      children: PropTypes.node,
     };
   }
   

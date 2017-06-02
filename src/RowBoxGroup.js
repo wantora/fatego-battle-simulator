@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import Paper from "material-ui/Paper";
 import _ from "lodash";
@@ -5,8 +6,8 @@ import _ from "lodash";
 export default class RowBoxGroup extends React.Component {
   static get propTypes() {
     return {
-      children: React.PropTypes.node,
-      style: React.PropTypes.object,
+      children: PropTypes.node,
+      style: PropTypes.object,
     };
   }
   

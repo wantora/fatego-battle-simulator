@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import TextField from "material-ui/TextField";
 import {dispatch} from "./flux";
@@ -5,10 +6,10 @@ import {dispatch} from "./flux";
 export default class InputNumber extends React.Component {
   static get propTypes() {
     return {
-      name: React.PropTypes.string.isRequired,
-      label: React.PropTypes.string.isRequired,
-      disabled: React.PropTypes.bool,
-      value: React.PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+      value: PropTypes.number.isRequired,
     };
   }
   

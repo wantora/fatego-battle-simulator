@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
@@ -6,11 +7,11 @@ import {dispatch} from "./flux";
 export default class InputSelect extends React.Component {
   static get propTypes() {
     return {
-      name: React.PropTypes.string.isRequired,
-      label: React.PropTypes.string.isRequired,
-      disabled: React.PropTypes.bool,
-      value: React.PropTypes.string.isRequired,
-      items: React.PropTypes.array.isRequired,
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      disabled: PropTypes.bool,
+      value: PropTypes.string.isRequired,
+      items: PropTypes.array.isRequired,
     };
   }
   
