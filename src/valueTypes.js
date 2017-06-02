@@ -1,9 +1,9 @@
 import React from "react";
 import _ from "lodash";
 
-import InputToggle from "./InputToggle";
-import InputNumber from "./InputNumber";
-import InputSelect from "./InputSelect";
+import InputToggle from "./components/InputToggle";
+import InputNumber from "./components/InputNumber";
+import InputSelect from "./components/InputSelect";
 
 class ValueType {
   constructor(data) {

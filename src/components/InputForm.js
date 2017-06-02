@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 import RaisedButton from "material-ui/RaisedButton";
-import valueTypes from "./valueTypes";
+import valueTypes from "../valueTypes";
 import RowBox from "./RowBox";
 import RowBoxWide from "./RowBoxWide";
 import RowBoxGroup from "./RowBoxGroup";
-import {dispatch} from "./flux";
+import {dispatch} from "../flux";
 
 export default class InputForm extends React.Component {
   static get propTypes() {

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import injectTapEventPlugin from "react-tap-event-plugin";
-import App from "./App";
+import App from "./components/App";
 import appTheme from "./appTheme";
 import {Store} from "./flux";
 import Storage from "./Storage";

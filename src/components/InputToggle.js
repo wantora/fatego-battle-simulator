@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Toggle from "material-ui/Toggle";
-import {dispatch} from "./flux";
+import {dispatch} from "../flux";
 
 export default class InputToggle extends React.Component {
   static get propTypes() {

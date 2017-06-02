@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import {dispatch} from "./flux";
+import {dispatch} from "../flux";
 
 export default class InputSelect extends React.Component {
   static get propTypes() {

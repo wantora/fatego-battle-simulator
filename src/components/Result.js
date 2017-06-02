@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Divider from "material-ui/Divider";
-import valueTypes from "./valueTypes";
+import numeral from "numeral";
+import valueTypes from "../valueTypes";
 import RowBox from "./RowBox";
 import RowBoxGroup from "./RowBoxGroup";
-import numeral from "numeral";
 
 export default class Result extends React.Component {
   static get propTypes() {

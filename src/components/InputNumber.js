@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import TextField from "material-ui/TextField";
-import {dispatch} from "./flux";
+import {dispatch} from "../flux";
 
 export default class InputNumber extends React.Component {
   static get propTypes() {
