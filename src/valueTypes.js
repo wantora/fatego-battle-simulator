@@ -10,6 +10,7 @@ class ValueType {
     this.name = data.name;
     this.defaultValue = data.defaultValue;
     this.label = data.label;
+    this.resultLabel = data.resultLabel || data.label;
     this.valueNames = data.valueNames;
     this.enableFilter = data.enableFilter;
     
@@ -56,11 +57,13 @@ const types = [
     name: "atk",
     defaultValue: 0,
     label: "ATK",
+    resultLabel: "基礎ダメージ",
   }),
   new ValueType({
     name: "classType",
     defaultValue: "saber",
     label: "クラス",
+    resultLabel: "クラス補正",
     valueNames: [
       {name: "saber", label: "セイバー", value: 100},
       {name: "archer", label: "アーチャー", value: 95},
@@ -129,6 +132,7 @@ const types = [
     name: "card",
     defaultValue: "arts",
     label: "カード種別",
+    resultLabel: "カード種別補正",
     valueNames: [
       {name: "arts", label: "Arts", value: 100},
       {name: "buster", label: "Buster", value: 150},
@@ -140,6 +144,7 @@ const types = [
     name: "cardOrder",
     defaultValue: "1",
     label: "カード順序",
+    resultLabel: "カード順序補正",
     valueNames: [
       {name: "1", label: "1st", value: 100},
       {name: "2", label: "2nd", value: 120},
@@ -150,7 +155,8 @@ const types = [
   new ValueType({
     name: "busterFirst",
     defaultValue: false,
-    label: "Buster1stボーナス",
+    label: "Busterが1stカード",
+    resultLabel: "Buster 1stボーナス",
     valueNames: [
       {name: true, label: "有り", value: 50},
       {name: false, label: "無し", value: 0},
@@ -164,6 +170,7 @@ const types = [
     name: "busterChain",
     defaultValue: false,
     label: "Busterチェイン",
+    resultLabel: "Busterチェインボーナス",
     valueNames: [
       {name: true, label: "有り", value: 20},
       {name: false, label: "無し", value: 0},
@@ -174,6 +181,7 @@ const types = [
     name: "colorBraveChain",
     defaultValue: false,
     label: "同色ブレイブチェイン",
+    resultLabel: "Extraボーナス",
     valueNames: [
       {name: true, label: "有り", value: 350},
       {name: false, label: "無し", value: 200},
@@ -184,6 +192,7 @@ const types = [
     name: "critical",
     defaultValue: false,
     label: "クリティカル",
+    resultLabel: "クリティカル補正",
     valueNames: [
       {name: true, label: "有り", value: 200},
       {name: false, label: "無し", value: 100},

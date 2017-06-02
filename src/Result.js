@@ -19,18 +19,18 @@ export default class Result extends React.Component {
     const rows = [];
     
     [
-      {name: "atk", type: "atk", label: "基礎ダメージ"},
-      {name: "classType", type: "percent", label: "クラス補正"},
+      {name: "atk", type: "atk"},
+      {name: "classType", type: "percent"},
       {name: "classAffinity", type: "percent"},
       {name: "attriAffinity", type: "percent"},
       {name: "noblePhantasmValue", type: "percent"},
       {name: "noblePhantasmSPValue", type: "percent"},
-      {name: "card", type: "percent", label: "カード種別補正"},
-      {name: "cardOrder", type: "percent", label: "カード順序補正"},
+      {name: "card", type: "percent"},
+      {name: "cardOrder", type: "percent"},
       {name: "busterFirst", type: "percent"},
-      {name: "busterChain", type: "atkPercent", label: "Busterチェインボーナス"},
-      {name: "colorBraveChain", type: "percent", label: "Extraアタックボーナス"},
-      {name: "critical", type: "percent", label: "クリティカル補正"},
+      {name: "busterChain", type: "atkPercent"},
+      {name: "colorBraveChain", type: "percent"},
+      {name: "critical", type: "percent"},
       {name: "cardEffect", type: "percent"},
       {name: "attackEffect", type: "percent"},
       {name: "defenseEffect", type: "percent"},
@@ -55,7 +55,7 @@ export default class Result extends React.Component {
         
         rows.push(
           <tr key={o.name}>
-            <th>{o.label || valueTypes[o.name].label}</th>
+            <th>{valueTypes[o.name].resultLabel}</th>
             <td>{valueStr}</td>
           </tr>
         );
