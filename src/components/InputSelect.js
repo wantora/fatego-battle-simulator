@@ -22,7 +22,9 @@ export default class InputSelect extends React.Component {
       dispatch({
         type: "update",
         name: this.props.name,
-        value: payload,
+        value: {
+          value: payload,
+        },
       });
     };
   }

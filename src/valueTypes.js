@@ -34,15 +34,19 @@ class ValueType {
     const valueType = typeof this.defaultValue;
     
     if (valueType === "boolean") {
-      return <InputToggle name={this.name} label={this.label} value={values[this.name]}
+      return <InputToggle name={this.name} label={this.label}
+        value={values.getValue(this.name)}
         disabled={!this.isEnable(values)}
       />;
     } else if (valueType === "number") {
-      return <InputNumber name={this.name} label={this.label} value={values[this.name]}
+      return <InputNumber name={this.name} label={this.label}
+        value={values.getValue(this.name)}
+        raw={values.getRaw(this.name)}
         disabled={!this.isEnable(values)}
       />;
     } else if (valueType === "string") {
-      return <InputSelect name={this.name} label={this.label} value={values[this.name]}
+      return <InputSelect name={this.name} label={this.label}
+        value={values.getValue(this.name)}
         items={this.valueNames}
         disabled={!this.isEnable(values)}
       />;
@@ -114,19 +118,19 @@ const types = [
     name: "noblePhantasmValue",
     defaultValue: 0,
     label: "宝具倍率",
-    enableFilter: (v) => v.attackType === "noblePhantasm",
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm",
   }),
   new ValueType({
     name: "noblePhantasmSPFlag",
     defaultValue: false,
     label: "特攻宝具",
-    enableFilter: (v) => v.attackType === "noblePhantasm",
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm",
   }),
   new ValueType({
     name: "noblePhantasmSPValue",
     defaultValue: 0,
     label: "宝具特攻倍率",
-    enableFilter: (v) => v.attackType === "noblePhantasm" && v.noblePhantasmSPFlag,
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm" && v.getValue("noblePhantasmSPFlag"),
   }),
   new ValueType({
     name: "card",
@@ -138,7 +142,7 @@ const types = [
       {name: "buster", label: "Buster", value: 150},
       {name: "quick", label: "Quick", value: 80},
     ],
-    enableFilter: (v) => v.attackType === "noblePhantasm" || v.attackType === "normal",
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm" || v.getValue("attackType") === "normal",
   }),
   new ValueType({
     name: "cardOrder",
@@ -150,7 +154,7 @@ const types = [
       {name: "2", label: "2nd", value: 120},
       {name: "3", label: "3rd", value: 140},
     ],
-    enableFilter: (v) => v.attackType === "normal",
+    enableFilter: (v) => v.getValue("attackType") === "normal",
   }),
   new ValueType({
     name: "busterFirst",
@@ -162,8 +166,8 @@ const types = [
       {name: false, label: "無し", value: 0},
     ],
     enableFilter: (v) => {
-      return (v.attackType === "normal" || v.attackType === "extra") &&
-        !(v.card !== "buster" && v.cardOrder === "1");
+      return (v.getValue("attackType") === "normal" || v.getValue("attackType") === "extra") &&
+        !(v.getValue("card") !== "buster" && v.getValue("cardOrder") === "1");
     },
   }),
   new ValueType({
@@ -175,7 +179,7 @@ const types = [
       {name: true, label: "有り", value: 20},
       {name: false, label: "無し", value: 0},
     ],
-    enableFilter: (v) => v.attackType === "normal" && v.card === "buster",
+    enableFilter: (v) => v.getValue("attackType") === "normal" && v.getValue("card") === "buster",
   }),
   new ValueType({
     name: "colorBraveChain",
@@ -186,7 +190,7 @@ const types = [
       {name: true, label: "有り", value: 350},
       {name: false, label: "無し", value: 200},
     ],
-    enableFilter: (v) => v.attackType === "extra",
+    enableFilter: (v) => v.getValue("attackType") === "extra",
   }),
   new ValueType({
     name: "critical",
@@ -197,13 +201,13 @@ const types = [
       {name: true, label: "有り", value: 200},
       {name: false, label: "無し", value: 100},
     ],
-    enableFilter: (v) => v.attackType === "normal",
+    enableFilter: (v) => v.getValue("attackType") === "normal",
   }),
   new ValueType({
     name: "cardEffect",
     defaultValue: 0,
     label: "カード性能状態変化",
-    enableFilter: (v) => v.attackType === "noblePhantasm" || v.attackType === "normal",
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm" || v.getValue("attackType") === "normal",
   }),
   new ValueType({
     name: "attackEffect",
@@ -224,13 +228,13 @@ const types = [
     name: "criticalEffect",
     defaultValue: 0,
     label: "クリティカル威力状態変化",
-    enableFilter: (v) => v.attackType === "normal" && v.critical === true,
+    enableFilter: (v) => v.getValue("attackType") === "normal" && v.getValue("critical") === true,
   }),
   new ValueType({
     name: "noblePhantasmEffect",
     defaultValue: 0,
     label: "宝具威力状態変化",
-    enableFilter: (v) => v.attackType === "noblePhantasm",
+    enableFilter: (v) => v.getValue("attackType") === "noblePhantasm",
   }),
   new ValueType({
     name: "damagePlusEffect",

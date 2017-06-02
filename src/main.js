@@ -9,7 +9,7 @@ import App from "./components/App";
 import appTheme from "./appTheme";
 import {Store} from "./flux";
 import Storage from "./Storage";
-import valueTypes from "./valueTypes";
+import StoreValues, {initialValues} from "./StoreValues";
 
 injectTapEventPlugin();
 require("normalize.css");
@@ -18,11 +18,13 @@ require("./css/main.css");
 function reducer(state, action) {
   if (action.type === "update") {
     return Object.assign({}, state, {
-      values: Object.assign({}, state.values, {[action.name]: action.value}),
+      values: Object.assign({}, state.values, {
+        [action.name]: action.value,
+      }),
     });
   } else if (action.type === "reset") {
     return Object.assign({}, state, {
-      values: initialState.values,
+      values: initialValues,
     });
   }
   return state;
@@ -30,21 +32,20 @@ function reducer(state, action) {
 
 function render() {
   storage.save(store.state);
+  
+  const storeValues = new StoreValues(store.state.values);
+  
   ReactDOM.render(
     <MuiThemeProvider muiTheme={getMuiTheme(appTheme)}>
-      <App {...store.state} />
+      <App values={storeValues} />
     </MuiThemeProvider>,
     document.getElementById("app")
   );
 }
 
 const initialState = {
-  values: {},
+  values: initialValues,
 };
-
-Object.keys(valueTypes).forEach((name) => {
-  initialState.values[name] = valueTypes[name].defaultValue;
-});
 
 const storage = new Storage("fatego-battle-simulator", sessionStorage);
 const store = new Store(storage.load(initialState), reducer);

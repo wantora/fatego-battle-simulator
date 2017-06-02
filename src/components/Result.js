@@ -208,7 +208,7 @@ export default class Result extends React.Component {
     const resolvedValues = {};
     
     Object.keys(valueTypes).forEach((name) => {
-      const value = values[name];
+      const value = values.getValue(name);
       
       resolvedValues[name] = valueTypes[name].resolveValue(value);
     });

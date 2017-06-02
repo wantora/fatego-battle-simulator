@@ -20,7 +20,9 @@ export default class InputToggle extends React.Component {
       dispatch({
         type: "update",
         name: this.props.name,
-        value: isInputChecked,
+        value: {
+          value: isInputChecked,
+        },
       });
     };
   }

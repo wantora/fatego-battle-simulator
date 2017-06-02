@@ -10,6 +10,7 @@ export default class InputNumber extends React.Component {
       label: PropTypes.string.isRequired,
       disabled: PropTypes.bool,
       value: PropTypes.number.isRequired,
+      raw: PropTypes.string.isRequired,
     };
   }
   
@@ -17,52 +18,39 @@ export default class InputNumber extends React.Component {
     super(props);
     
     this.state = {
-      value: this.props.value,
-      isError: false,
+      errorText: null,
     };
     
-    this.textInput = null;
-    this.timeoutID = null;
     this.handleChange = (event, newValue) => {
-      clearTimeout(this.timeoutID);
-      this.timeoutID = setTimeout(() => {
-        this.update(newValue);
-      }, 100);
-    };
-  }
-  update(newValue) {
-    const value = this.strictParseNumber(newValue);
-    
-    if (isNaN(value)) {
-      this.setState({isError: true});
-    } else {
-      this.setState({value, isError: false});
+      const num = this.strictParseNumber(newValue);
+      
+      this.setState({
+        errorText: event.target.checkValidity() ? null : event.target.validationMessage,
+      });
       
       dispatch({
         type: "update",
         name: this.props.name,
-        value,
+        value: {
+          value: isNaN(num) ? 0 : num,
+          raw: newValue,
+        },
       });
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    // resetされた時
-    if (nextProps.value !== this.state.value) {
-      this.textInput.input.value = nextProps.value;
-      this.setState({value: nextProps.value, isError: false});
-    }
+    };
   }
   render() {
+    const raw = this.props.raw === "" ? String(this.props.value) : this.props.raw;
+    
     return <TextField
       key={this.props.name}
       type="number"
+      step="0.1"
       floatingLabelText={this.props.label}
       floatingLabelFixed
       fullWidth
-      errorText={this.state.isError ? "数値を入力して下さい。" : null}
+      errorText={this.state.errorText}
       disabled={this.props.disabled}
-      defaultValue={this.state.value.toString()}
-      ref={(e) => { this.textInput = e; }}
+      value={raw}
       onChange={this.handleChange}
     />;
   }
