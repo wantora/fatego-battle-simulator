@@ -72,6 +72,8 @@ const types = [
       {name: "shielder", label: "シールダー", value: 100},
       {name: "ruler", label: "ルーラー", value: 110},
       {name: "avenger", label: "アヴェンジャー", value: 110},
+      {name: "mooncancer", label: "ムーンキャンサー", value: 100},
+      {name: "alterego", label: "アルターエゴ", value: 100},
     ],
   }),
   new ValueType({
