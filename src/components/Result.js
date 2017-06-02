@@ -71,15 +71,15 @@ export default class Result extends React.Component {
           <tbody>
             <tr>
               <th>ダメージ (最小)</th>
-              <td>{numeral(damageMin).format("0,0")}</td>
+              <td>{numeral(damageMin).format("0,0", Math.floor)}</td>
             </tr>
             <tr>
               <th>ダメージ (中央)</th>
-              <td>{numeral(damageAve).format("0,0")}</td>
+              <td>{numeral(damageAve).format("0,0", Math.floor)}</td>
             </tr>
             <tr>
               <th>ダメージ (最大)</th>
-              <td>{numeral(damageMax).format("0,0")}</td>
+              <td>{numeral(damageMax).format("0,0", Math.floor)}</td>
             </tr>
           </tbody>
         </table>
