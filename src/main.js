@@ -44,6 +44,7 @@ function render() {
 }
 
 const initialState = {
+  version: 2,
   values: initialValues,
 };
 
