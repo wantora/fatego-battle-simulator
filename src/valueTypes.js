@@ -61,10 +61,19 @@ const COLOR_RESIST = "hsl(240, 70%, 50%)";
 
 const types = [
   new ValueType({
-    name: "atk",
+    name: "servantATK",
     defaultValue: 0,
-    label: "ATK",
-    resultLabel: "基礎ダメージ",
+    label: "サーヴァントATK",
+  }),
+  new ValueType({
+    name: "fouATK",
+    defaultValue: 0,
+    label: "ATK強化値(フォウくん)",
+  }),
+  new ValueType({
+    name: "craftEssenceATK",
+    defaultValue: 0,
+    label: "概念礼装ATK",
   }),
   new ValueType({
     name: "classType",

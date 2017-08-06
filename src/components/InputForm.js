@@ -17,7 +17,9 @@ export default class InputForm extends React.Component {
   render() {
     return <RowBoxGroup style={{paddingTop: 2}}>
       <RowBox>
-        {valueTypes.atk.getInputComponent(this.props.values)}
+        {valueTypes.servantATK.getInputComponent(this.props.values)}
+        {valueTypes.fouATK.getInputComponent(this.props.values)}
+        {valueTypes.craftEssenceATK.getInputComponent(this.props.values)}
         {valueTypes.classType.getInputComponent(this.props.values)}
         {valueTypes.classAffinity.getInputComponent(this.props.values)}
         {valueTypes.attriAffinity.getInputComponent(this.props.values)}

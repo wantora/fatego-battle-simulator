@@ -13,7 +13,7 @@ module.exports = {
     filename: "[name].js",
     pathinfo: true,
   },
-  devtool: "eval-cheap-module-source-map",
+  devtool: "cheap-module-source-map",
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true,

@@ -46,6 +46,19 @@ export default class Storage {
       });
     }
     
+    // version 2 to 3
+    if (newData.version === 2) {
+      newData = Object.assign({}, newData, {
+        version: 3,
+        values: Object.assign({}, newData.values, {
+          atk: undefined,
+          servantATK: newData.values.atk,
+          fouATK: {value: 0},
+          craftEssenceATK: {value: 0},
+        }),
+      });
+    }
+    
     return newData;
   }
 }

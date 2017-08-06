@@ -20,7 +20,7 @@ export default class Result extends React.Component {
     const rows = [];
     
     [
-      {name: "atk", type: "atk"},
+      {name: "atk"},
       {name: "classType", type: "percent"},
       {name: "classAffinity", type: "percent"},
       {name: "attriAffinity", type: "percent"},
@@ -40,7 +40,18 @@ export default class Result extends React.Component {
       {name: "noblePhantasmEffect", type: "percent"},
       {name: "damagePlusEffect", type: "number"},
     ].forEach((o) => {
-      if (valueTypes[o.name].isEnable(this.props.values)) {
+      if (o.name === "atk") {
+        rows.push(
+          <tr key="atk">
+            <th>合計ATK</th>
+            <td>{numeral(resolvedValues.atk).format("0,0")}</td>
+          </tr>,
+          <tr key="baseDamage">
+            <th>基礎ダメージ</th>
+            <td>{numeral(resolvedValues.atk * 0.23).format("0,0.0")}</td>
+          </tr>
+        );
+      } else if (valueTypes[o.name].isEnable(this.props.values)) {
         const value = resolvedValues[o.name];
         let valueStr;
         
@@ -48,8 +59,6 @@ export default class Result extends React.Component {
           valueStr = numeral(value).format("0,0");
         } else if (o.type === "percent") {
           valueStr = numeral(value / 100).format("0,0.0%");
-        } else if (o.type === "atk") {
-          valueStr = numeral(value * 0.23).format("0,0.0");
         } else if (o.type === "atkPercent") {
           valueStr = numeral(resolvedValues.atk * value / 100).format("0,0.0");
         }
@@ -212,6 +221,10 @@ export default class Result extends React.Component {
       
       resolvedValues[name] = valueTypes[name].resolveValue(value);
     });
+    
+    resolvedValues.atk = resolvedValues.servantATK +
+      resolvedValues.fouATK +
+      resolvedValues.craftEssenceATK;
     
     return resolvedValues;
   }
