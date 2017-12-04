@@ -20,8 +20,8 @@ export default class StoreValues {
 
 export const initialValues = {};
 
-Object.keys(valueTypes).forEach((name) => {
-  initialValues[name] = {
-    value: valueTypes[name].defaultValue,
+Object.keys(valueTypes).forEach((typeName) => {
+  initialValues[typeName] = {
+    value: valueTypes[typeName].defaultValue,
   };
 });

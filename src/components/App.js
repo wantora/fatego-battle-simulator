@@ -9,7 +9,6 @@ export default class App extends React.Component {
       values: PropTypes.object.isRequired,
     };
   }
-  
   render() {
     return <div>
       <InputForm values={this.props.values} />

@@ -10,7 +10,6 @@ export default class RowBoxGroup extends React.Component {
       style: PropTypes.object,
     };
   }
-  
   render() {
     return <Paper
       style={_.merge({

@@ -12,11 +12,10 @@ export default class InputToggle extends React.Component {
       value: PropTypes.bool.isRequired,
     };
   }
-  
   constructor(props) {
     super(props);
     
-    this.handleToggle = (event, isInputChecked) => {
+    this.handleToggle = (ev, isInputChecked) => {
       dispatch({
         type: "update",
         name: this.props.name,

@@ -13,7 +13,6 @@ export default class InputForm extends React.Component {
       values: PropTypes.object.isRequired,
     };
   }
-  
   render() {
     return <RowBoxGroup style={{paddingTop: 2}}>
       <RowBox>

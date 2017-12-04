@@ -14,11 +14,10 @@ export default class InputSelect extends React.Component {
       items: PropTypes.array.isRequired,
     };
   }
-  
   constructor(props) {
     super(props);
     
-    this.handleChange = (event, key, payload) => {
+    this.handleChange = (ev, key, payload) => {
       dispatch({
         type: "update",
         name: this.props.name,

@@ -12,7 +12,6 @@ export default class Result extends React.Component {
       values: PropTypes.object.isRequired,
     };
   }
-  
   render() {
     const resolvedValues = this.resolveValues(this.props.values);
     const [damageMin, damageAve, damageMax] = this.simulateDamage(resolvedValues);
@@ -117,7 +116,6 @@ export default class Result extends React.Component {
     
     return [damageMin, damageAve, damageMax];
   }
-  
   simulateDamageA(v) {
     let damage = v.atk;
     
@@ -216,10 +214,10 @@ export default class Result extends React.Component {
   resolveValues(values) {
     const resolvedValues = {};
     
-    Object.keys(valueTypes).forEach((name) => {
-      const value = values.getValue(name);
+    Object.keys(valueTypes).forEach((typeName) => {
+      const value = values.getValue(typeName);
       
-      resolvedValues[name] = valueTypes[name].resolveValue(value);
+      resolvedValues[typeName] = valueTypes[typeName].resolveValue(value);
     });
     
     resolvedValues.atk = resolvedValues.servantATK +

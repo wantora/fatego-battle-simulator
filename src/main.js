@@ -8,7 +8,7 @@ import injectTapEventPlugin from "react-tap-event-plugin";
 import App from "./components/App";
 import appTheme from "./appTheme";
 import {Store} from "./flux";
-import Storage from "./Storage";
+import PermanentStorage from "./PermanentStorage";
 import StoreValues, {initialValues} from "./StoreValues";
 
 injectTapEventPlugin();
@@ -48,7 +48,7 @@ const initialState = {
   values: initialValues,
 };
 
-const storage = new Storage("fatego-battle-simulator", sessionStorage);
+const storage = new PermanentStorage("fatego-battle-simulator", sessionStorage);
 const store = new Store(storage.load(initialState), reducer);
 
 store.subscribe(render);

@@ -7,7 +7,6 @@ export default class RowBoxWide extends React.Component {
       children: PropTypes.node,
     };
   }
-  
   render() {
     return <div
       style={{

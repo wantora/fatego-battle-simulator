@@ -13,7 +13,6 @@ export default class InputNumber extends React.Component {
       raw: PropTypes.string.isRequired,
     };
   }
-  
   constructor(props) {
     super(props);
     
@@ -21,11 +20,11 @@ export default class InputNumber extends React.Component {
       errorText: null,
     };
     
-    this.handleChange = (event, newValue) => {
+    this.handleChange = (ev, newValue) => {
       const num = this.strictParseNumber(newValue);
       
       this.setState({
-        errorText: event.target.checkValidity() ? null : event.target.validationMessage,
+        errorText: ev.target.checkValidity() ? null : ev.target.validationMessage,
       });
       
       dispatch({
